@@ -23,8 +23,15 @@ class Gui(Frame):
 
         # Create buttons
         self.take_photo_button = ButtonComponent(self.root)
-        self.testing = Button(self.root, text="info", command=self.window_info)
+
+        self.testing_photo = Button(self.root, text="Take Photo", command=self.take_photo)
+        self.testing_photo.pack()
+
+        self.testing = Button(self.root, text="Close App", command=self.exit_camera)
         self.testing.pack()
+
+        # start camera
+        self.setup_camera()
 
         # Disables the entire top level window
         self.root.overrideredirect(True)
@@ -53,6 +60,22 @@ class Gui(Frame):
         print(self.root.winfo_rootx, self.root.winfo_rooty)
         print(dir(self.root))
 
+    def exit_camera(self):
+        self.camera.stop_preview()
+        self.camera.close()
+        self.root.destroy()
+
+    def setup_camera(self):
+        self.camera = picamera.PiCamera()
+        self.camera.preview_fullscreen = False
+        self.camera.preview_window = (35,0,160, 200)
+        self.camera.start_preview()
+
+    def take_photo(self):
+        try:
+            self.camera.capture("testing.jpg")
+        except:
+            print("error when taking the photo")
 
 if __name__ == "__main__":
     root = Tk()
