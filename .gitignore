@@ -1,3 +1,4 @@
 ENV*
 .idea*
 app/gui_components/__pycache__/*
+*~

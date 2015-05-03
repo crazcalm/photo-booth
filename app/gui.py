@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+import picamera
 from gui_components.canvas_component import CanvasComponent
 from gui_components.button_components import ButtonComponent
 
