@@ -22,7 +22,7 @@ class Gui(Frame):
         self.canvas = CanvasComponent(self.root)
 
         # Create buttons
-        self.take_photo_button = ButtonComponent(self.root)
+        #self.take_photo_button = ButtonComponent(self.root)
 
         self.testing_photo = Button(self.root, text="Take Photo", command=self.take_photo)
         self.testing_photo.pack()
